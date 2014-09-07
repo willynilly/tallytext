@@ -17,10 +17,10 @@ angular.module('tallytextApp')
 				
 		this.appendText = function(s) {
 			this.demoText += s;
+			this.analyzeText();
 		};
 		
 		this.analyzeText = function() {
-			console.log('analyze text');
 			// update the lexer with demo text
 			lexer.setTokensFromString(this.tokenCollectionName, this.demoText);
 		};
