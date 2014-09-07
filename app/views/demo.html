@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-12">
+    <textarea ng-model="demoCtrl.demoText" ng-trim="false" ng-change="demoCtrl.analyzeText()" class="form-control" placeholder="enter some text"></textarea>
+  </div>
+</div>
+
+<div class="row padtop20" ng-controller="PersonalPronounCtrl as ppCtrl">
+  <div class="col-md-6">
+    <p><strong>Personal Pronoun Frequencies</strong></p>
+    <p>
+      <button type="button" class="btn btn-default btn-xs" ng-click="demoCtrl.appendText(' ' + pronoun)" ng-repeat="pronoun in ppCtrl.words track by $index">{{pronoun}}: {{ppCtrl.wordCounts[pronoun]}}</button>
+    </p>
+  </div>
+
+  <div class="col-md-6">
+    <p class="text-right"><strong>Total Personal Pronoun Count:</strong> {{ppCtrl.totalWordCount}}</p>
+    <p class="text-right"><strong>Unique Personal Pronoun Count:</strong> {{ppCtrl.words.length}}</p>
+  </div>
+</div>
+
+<div class="row padtop20" ng-controller="AllWordsCtrl as awCtrl">
+  <div class="col-md-6">
+    <p><strong>Word Frequencies</strong></p>
+    <p>
+      <button type="button" class="btn btn-default btn-xs" ng-click="demoCtrl.appendText(' ' + word)" ng-repeat="word in awCtrl.words track by $index">{{word}}: {{awCtrl.wordCounts[word]}}</button>
+    </p>
+  </div>
+  
+  <div class="col-md-6">
+    <p class="text-right"><strong>Character Count:</strong> {{demoCtrl.demoText.length}}</p>    
+    <p class="text-right"><strong>Total Word Count:</strong> {{awCtrl.totalWordCount}}</p>
+    <p class="text-right"><strong>Unique Word Count:</strong> {{awCtrl.words.length}}</p>
+  </div>
+</div>
