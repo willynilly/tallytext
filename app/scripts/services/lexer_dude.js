@@ -121,10 +121,20 @@ angular.module('lexerDude', [])
 			this._onTokenChangeCallbacks[collectionName].push(callback);
 		};
 		
-		var _notifyOnTokenChange = function(collectionName) {
-			console.log('notifying change');
-			
+		var removeOnTokenChange = function(collectionName, callback) {
+			console.log('removed token change');
 			if (collectionName in this._onTokenChangeCallbacks) {
+				var filtered = this._onTokenChangeCallbacks[collectionName].filter(function(c){return c!==callback;});
+				this._onTokenChangeCallbacks[collectionName] = filtered;
+			}
+		};
+		
+		var _notifyOnTokenChange = function(collectionName) {			
+			if (collectionName in this._onTokenChangeCallbacks) {
+				console.log('notifying change for ' + collectionName);
+				
+				var callbackCount = this._onTokenChangeCallbacks[collectionName].length;
+				console.log(callbackCount);
 				this._onTokenChangeCallbacks[collectionName].map(function(callback){
 					callback();
 				});

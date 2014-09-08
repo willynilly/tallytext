@@ -4,23 +4,52 @@
   </div>
 </div>
 
-<div class="row padtop20" ng-controller="PersonalPronounCtrl as ppCtrl">
+<div class="row padtop20" ng-controller="LexerCtrl as personalPronounsCtrl" ng-init="personalPronounsCtrl.init('demo', 'personalPronounWords', 'i, me, he, she, we, us, them, they, you, yal, her, him, it')">
   <div class="col-md-6">
     <p><strong>Personal Pronoun Frequencies</strong></p>
     <p>
-      <button type="button" class="btn btn-default btn-xs" ng-click="demoCtrl.appendText(' ' + pronoun)" ng-repeat="pronoun in ppCtrl.words track by $index">{{pronoun}}: {{ppCtrl.wordCounts[pronoun]}}</button>
+      <button type="button" class="btn btn-default btn-xs" ng-click="demoCtrl.appendText(' ' + word)" ng-repeat="word in personalPronounsCtrl.words track by $index">{{word}}: {{personalPronounsCtrl.wordCounts[word]}}</button>
     </p>
   </div>
 
   <div class="col-md-6">
-    <p class="text-right"><strong>Total Personal Pronoun Count:</strong> {{ppCtrl.totalWordCount}}</p>
-    <p class="text-right"><strong>Unique Personal Pronoun Count:</strong> {{ppCtrl.words.length}}</p>
+    <p class="text-right"><strong>Total Personal Pronoun Count:</strong> {{personalPronounsCtrl.totalWordCount}}</p>
+    <p class="text-right"><strong>Unique Personal Pronoun Count:</strong> {{personalPronounsCtrl.words.length}}</p>
+  </div>
+</div>
+
+<div class="row padtop20" ng-controller="LexerCtrl as questionWordCtrl" ng-init="questionWordCtrl.init('demo', 'questionWords', 'Who, What, When, Why, How')">
+  <div class="col-md-6">
+    <p><strong>Question Word Frequencies</strong></p>
+    <p>
+      <button type="button" class="btn btn-default btn-xs" ng-click="demoCtrl.appendText(' ' + word)" ng-repeat="word in questionWordCtrl.words track by $index">{{word}}: {{questionWordCtrl.wordCounts[word]}}</button>
+    </p>
+  </div>
+
+  <div class="col-md-6">
+    <p class="text-right"><strong>Total Question Word Count:</strong> {{questionWordCtrl.totalWordCount}}</p>
+    <p class="text-right"><strong>Unique Question Word Count:</strong> {{questionWordCtrl.words.length}}</p>
+  </div>
+</div>
+
+<div class="row padtop20" ng-controller="LexerCtrl as posWordCtrl" ng-init="posWordCtrl.init('demo', 'positiveWords', 'yes, good, great, perfect, fantastic, liked, like, delicious, terrific, excellent, amazing, enjoyed, love, loved, kind, nice, interesting, fun, awesome')">
+  <div class="col-md-6">
+    <p><strong>Emotionally Positive Word Frequencies</strong></p>
+    <p>
+      <button type="button" class="btn btn-default btn-xs" ng-click="demoCtrl.appendText(' ' + word)" ng-repeat="word in posWordCtrl.words track by $index">{{word}}: {{posWordCtrl.wordCounts[word]}}</button>
+    </p>
+    <p><small>(currently uses a limited list of emotionally positive words)</small></p>
+  </div>
+
+  <div class="col-md-6">
+    <p class="text-right"><strong>Total Positive Word Count:</strong> {{posWordCtrl.totalWordCount}}</p>
+    <p class="text-right"><strong>Unique Positive Word Count:</strong> {{posWordCtrl.words.length}}</p>
   </div>
 </div>
 
 <div class="row padtop20" ng-controller="AllWordsCtrl as awCtrl">
   <div class="col-md-6">
-    <p><strong>Word Frequencies</strong></p>
+    <p><strong>All Word Frequencies</strong></p>
     <p>
       <button type="button" class="btn btn-default btn-xs" ng-click="demoCtrl.appendText(' ' + word)" ng-repeat="word in awCtrl.words track by $index">{{word}}: {{awCtrl.wordCounts[word]}}</button>
     </p>
